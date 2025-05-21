@@ -9,8 +9,8 @@ export default function Home() {
   const getUsers = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:8080/viewAll");
-      const ws = new WebSocket("ws://localhost:8081");
+      const res = await axios.get("http://staging-http.tandev-stage.fun/viewAll");
+      const ws = new WebSocket("http://staging-ws.tandev-stage.fun");
       ws.onopen = ()=>{
         alert("Connected!!")
       }

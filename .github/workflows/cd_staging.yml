@@ -1,0 +1,13 @@
+name: Deploy to staging env
+on:
+  push: 
+    branches: 
+      - "main"
+
+
+jobs:
+  redeploy_project:
+    name: Deploying the project through CI CD pipeline
+
+    steps:
+      - name: SSH into the server 
