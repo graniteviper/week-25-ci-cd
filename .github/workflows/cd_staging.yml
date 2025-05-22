@@ -12,7 +12,7 @@ jobs:
       - run: |
           echo "${{secrets.SSH_PRIVATE_KEY_GCP}}" &> ~/ssh_key
           chmod 700 /home/runner/ssh_key
-          ssh -i ssh_key -o StrictHostKeyChecking=no tanishq@34.58.204.246 -t "cd week-25-ci-cd/ && git pull origin main && export PATH=/home/tanishq/.nvm/versions/node/v22.16.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin && npm install -g pnpm && pnpm install && pnpm run build && pm2 restart all"
+          ssh -i ~/ssh_key -o StrictHostKeyChecking=no tanishq@34.58.204.246 -t "cd week-25-ci-cd/ && git pull origin main && export PATH=/home/tanishq/.nvm/versions/node/v22.16.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin && npm install -g pnpm && pnpm install && pnpm run build && pm2 restart all"
           
           
           
