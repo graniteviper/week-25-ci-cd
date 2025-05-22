@@ -1,13 +1,19 @@
 name: Deploy to staging env
 on:
   push: 
-    branches: 
-      - "main"
+    branches: ["main"]
 
 
 jobs:
   redeploy_project:
+    runs-on: ubuntu-latest
     name: Deploying the project through CI CD pipeline
-
     steps:
-      - name: SSH into the server 
+      - run: |
+          echo ${{SSH_PRIVATE_KEY_GCP}} &> ~/ssh_key
+          ssh -i ssh_key tanishq@34.58.204.246
+          cd week-25-ci-cd/ && git pull
+          pnpm install
+          pnpm run build
+          pm2 restart all
+
