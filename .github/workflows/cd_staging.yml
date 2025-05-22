@@ -10,7 +10,7 @@ jobs:
     name: Deploying the project through CI CD pipeline
     steps:
       - run: |
-          echo ${{SSH_PRIVATE_KEY_GCP}} &> ~/ssh_key
+          echo ${{secrets.SSH_PRIVATE_KEY_GCP}} &> ~/ssh_key
           ssh -i ssh_key tanishq@34.58.204.246
           cd week-25-ci-cd/ && git pull
           pnpm install
